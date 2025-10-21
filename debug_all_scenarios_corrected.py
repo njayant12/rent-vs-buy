@@ -274,6 +274,16 @@ print(f"  PMI: $0 (20% down!)")
 print(f"  Property Tax + Insurance: ${monthly_tax_ins_20pct:,.2f}")
 print(f"  TOTAL MONTHLY: ${monthly_payment_20pct + monthly_tax_ins_20pct:,.2f}")
 
+# Calculate monthly savings vs 3% down baseline
+baseline_monthly_cost = monthly_payment_3pct + monthly_pmi_3pct + monthly_tax_ins_3pct
+monthly_cost_20pct = monthly_payment_20pct + monthly_tax_ins_20pct
+monthly_savings_20pct = baseline_monthly_cost - monthly_cost_20pct
+
+print(f"\nMONTHLY SAVINGS (vs 3% down baseline):")
+print(f"  3% down monthly cost: ${baseline_monthly_cost:,.2f}")
+print(f"  20% down monthly cost: ${monthly_cost_20pct:,.2f}")
+print(f"  Monthly savings to invest: ${monthly_savings_20pct:,.2f}")
+
 # YEAR 1 - 20% DOWN
 print(f"\n{'='*80}")
 print("YEAR 1 - 20% DOWN")
@@ -282,9 +292,9 @@ print('='*80)
 interest_y1_20, principal_y1_20, balance_y1_20 = calculate_year_mortgage_breakdown(
     loan_20pct, monthly_payment_20pct)
 
-# No starting investment balance (all went to down payment)
+# Investment with monthly contributions from cash flow savings
 inv_eoy_y1_20, inv_contrib_y1_20, inv_returns_y1_20 = calculate_investment_growth_with_contributions(
-    0, 0, 12)  # Starting from $0
+    0, monthly_savings_20pct, 12)  # $0 start + monthly savings
 
 total_costs_y1_20 = (monthly_payment_20pct * 12) + property_tax_y1 + HOME_INSURANCE_ANNUAL
 
@@ -301,6 +311,8 @@ print(f"   Principal Paid: +${principal_y1_20:,.0f}")
 
 print(f"\n3. INVESTMENT RETURNS:")
 print(f"   Starting Balance: $0 (all capital spent on down payment)")
+print(f"   Monthly contributions: ${inv_contrib_y1_20:,.0f} (${monthly_savings_20pct:,.0f}/mo)")
+print(f"   Ending Balance: ${inv_eoy_y1_20:,.0f}")
 print(f"   Investment Returns: +${inv_returns_y1_20:,.0f}")
 
 print(f"\n4. COSTS:")
@@ -326,8 +338,9 @@ print('='*80)
 interest_y2_20, principal_y2_20, balance_y2_20 = calculate_year_mortgage_breakdown(
     balance_y1_20, monthly_payment_20pct)
 
+# Continue investing monthly savings
 inv_eoy_y2_20, inv_contrib_y2_20, inv_returns_y2_20 = calculate_investment_growth_with_contributions(
-    inv_eoy_y1_20, 0, 12)
+    inv_eoy_y1_20, monthly_savings_20pct, 12)
 
 total_costs_y2_20 = (monthly_payment_20pct * 12) + property_tax_y2 + home_ins_y2
 tax_savings_y2_20, _, _, _, _ = calculate_tax_benefit(interest_y2_20, property_tax_y2, balance_y1_20)
@@ -341,6 +354,8 @@ print(f"   Principal Year 2: +${principal_y2_20:,.0f}")
 print(f"   Total Equity: ${property_value_y2 - balance_y2_20:,.0f}")
 
 print(f"\n3. INVESTMENT RETURNS:")
+print(f"   Balance: ${inv_eoy_y1_20:,.0f} → ${inv_eoy_y2_20:,.0f}")
+print(f"   Contributions Year 2: +${inv_contrib_y2_20:,.0f}")
 print(f"   Returns Year 2: +${inv_returns_y2_20:,.0f}")
 
 print(f"\n4. NET POSITION YEAR 2:")
@@ -359,22 +374,29 @@ print(f"\n\n{'='*80}")
 print("SCENARIO 3: RENTING")
 print("="*80)
 
+monthly_rent_savings = baseline_monthly_cost - MONTHLY_RENT
+
 print(f"\nSTARTING:")
 print(f"  Capital to Invest: ${STARTING_CAPITAL:,}")
 print(f"  Monthly Rent: ${MONTHLY_RENT:,}")
+print(f"\nMONTHLY SAVINGS (vs 3% down baseline):")
+print(f"  3% down monthly cost: ${baseline_monthly_cost:,.2f}")
+print(f"  Rent: ${MONTHLY_RENT:,.2f}")
+print(f"  Monthly savings to invest: ${monthly_rent_savings:,.2f}")
 
 # YEAR 1 - RENTING
 print(f"\n{'='*80}")
 print("YEAR 1 - RENTING")
 print('='*80)
 
-inv_eoy_y1_rent, _, inv_returns_y1_rent = calculate_investment_growth_with_contributions(
-    STARTING_CAPITAL, 0, 12)
+inv_eoy_y1_rent, inv_contrib_y1_rent, inv_returns_y1_rent = calculate_investment_growth_with_contributions(
+    STARTING_CAPITAL, monthly_rent_savings, 12)
 
 rent_y1 = MONTHLY_RENT * 12
 
 print(f"\n1. INVESTMENT RETURNS:")
 print(f"   Starting: ${STARTING_CAPITAL:,}")
+print(f"   Monthly contributions: ${inv_contrib_y1_rent:,.0f} (${monthly_rent_savings:,.0f}/mo)")
 print(f"   Ending: ${inv_eoy_y1_rent:,.0f}")
 print(f"   Returns (7% compounded): +${inv_returns_y1_rent:,.0f}")
 
@@ -393,13 +415,14 @@ print(f"\n{'='*80}")
 print("YEAR 2 - RENTING")
 print('='*80)
 
-inv_eoy_y2_rent, _, inv_returns_y2_rent = calculate_investment_growth_with_contributions(
-    inv_eoy_y1_rent, 0, 12)
+inv_eoy_y2_rent, inv_contrib_y2_rent, inv_returns_y2_rent = calculate_investment_growth_with_contributions(
+    inv_eoy_y1_rent, monthly_rent_savings, 12)
 
 rent_y2 = rent_y1 * (1 + RENT_GROWTH)
 
 print(f"\n1. INVESTMENT RETURNS:")
 print(f"   Starting: ${inv_eoy_y1_rent:,.0f}")
+print(f"   Monthly contributions: ${inv_contrib_y2_rent:,.0f}")
 print(f"   Ending: ${inv_eoy_y2_rent:,.0f}")
 print(f"   Returns Year 2: +${inv_returns_y2_rent:,.0f}")
 
