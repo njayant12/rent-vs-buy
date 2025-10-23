@@ -196,21 +196,28 @@ print()
 # FV = PV * (1 + r)^t, solving for PV
 years_saving = 4
 hysa_rate = 0.03
+stock_rate = 0.07
 amount_needed_4_years_ago = TOTAL_UPFRONT / ((1 + hysa_rate) ** years_saving)
+
+# What if they had invested in stocks instead?
+amount_if_stocks = amount_needed_4_years_ago * ((1 + stock_rate) ** years_saving)
+opportunity_cost_4_years = amount_if_stocks - TOTAL_UPFRONT
+
 print(f"Setup:")
 print(f"  • Saved ${amount_needed_4_years_ago:,.0f} four years ago")
-print(f"  • Grew at 3% after-tax in HYSA/T-bills")
-print(f"  • Now have ${TOTAL_UPFRONT:,.0f} for down payment")
+print(f"  • Path A (HYSA at 3%): Grew to ${TOTAL_UPFRONT:,.0f}")
+print(f"  • Path B (Stocks at 7%): Would have grown to ${amount_if_stocks:,.0f}")
+print(f"  • Opportunity cost of being conservative: ${opportunity_cost_4_years:,.0f}")
 print()
 print("Analysis:")
-print(f"  • Buyer: Uses ${TOTAL_UPFRONT:,.0f} for down payment, starts with $0 invested")
-print(f"  • Renter: Keeps ${TOTAL_UPFRONT:,.0f} invested, switches to 7% stocks going forward")
-print(f"  • Drag: 4% differential (7% stocks - 3% HYSA)")
+print(f"  • Buyer: Has ${TOTAL_UPFRONT:,.0f} from HYSA, uses for down payment, starts with $0 invested")
+print(f"  • Renter: Would have had ${amount_if_stocks:,.0f} if invested in stocks, invests that going forward")
+print(f"  • Drag: Already lost ${opportunity_cost_4_years:,.0f} over 4 years by being conservative")
 print()
 
 scenario2 = run_scenario(
-    buyer_starting_capital=TOTAL_UPFRONT,
-    renter_starting_capital=TOTAL_UPFRONT,
+    buyer_starting_capital=TOTAL_UPFRONT,  # Buyer has HYSA amount
+    renter_starting_capital=amount_if_stocks,  # Renter has what stocks would have been
     scenario_name="HYSA Savings"
 )
 
@@ -308,9 +315,10 @@ print("   - You wouldn't have had the money otherwise")
 print()
 
 print("2. HYSA SAVINGS (4% Differential):")
-print(f"   - Gap: ${abs(scenario2['difference']):,.0f} (same as RSUs)")
-print("   - Same outcome as RSUs - both start with same capital")
-print("   - The 4 years of 3% vs 7% already happened in the past")
+print(f"   - Gap: ${abs(scenario2['difference']):,.0f}")
+print(f"   - Being conservative cost ${opportunity_cost_4_years:,.0f} over 4 years")
+print(f"   - That compounds to ${abs(scenario2['difference']) - abs(scenario1['difference']):,.0f} bigger gap after 30 years")
+print(f"   - Total penalty for HYSA: ${abs(scenario2['difference']):,.0f} vs RSUs ${abs(scenario1['difference']):,.0f}")
 print()
 
 print("3. SELL INVESTMENTS (7% + Tax Hit):")
@@ -334,12 +342,13 @@ print("Down payment source creates a ${:,.0f} swing in outcomes!".format(
     abs(scenario3['difference']) - abs(scenario1['difference'])
 ))
 print()
-print("Best case (RSUs/HYSA):     Renting wins by ${:,.0f}".format(abs(scenario1['difference'])))
-print("Worst case (Sell stocks):  Renting wins by ${:,.0f}".format(abs(scenario3['difference'])))
+print("Best case (Fresh RSUs):         Renting wins by ${:,.0f}".format(abs(scenario1['difference'])))
+print("Conservative savings (HYSA):    Renting wins by ${:,.0f}".format(abs(scenario2['difference'])))
+print("Worst case (Sell stocks):       Renting wins by ${:,.0f}".format(abs(scenario3['difference'])))
 print()
-print("Why selling investments is worst:")
-print(f"  • Pay ${capital_gains_tax:,.0f} in taxes upfront")
-print(f"  • That ${capital_gains_tax:,.0f} could have grown to ${capital_gains_tax * (1.07**30):,.0f} over 30 years!")
+print("Why each scenario differs:")
+print(f"  • HYSA: Lost ${opportunity_cost_4_years:,.0f} over 4 years → compounds to ${abs(scenario2['difference']) - abs(scenario1['difference']):,.0f} extra gap")
+print(f"  • Sell stocks: Pay ${capital_gains_tax:,.0f} in taxes → compounds to ${abs(scenario3['difference']) - abs(scenario1['difference']):,.0f} extra gap")
 print()
 
 # Create visualization
@@ -474,18 +483,25 @@ print("📊 Fresh RSUs (vesting):")
 print(f"  → Renting wins by ${abs(scenario1['difference'])/1000:.0f}K")
 print()
 print("📊 Saved in HYSA over 4 years:")
-print(f"  → Renting wins by ${abs(scenario2['difference'])/1000:.0f}K (same as RSUs)")
+print(f"  → Already lost ${opportunity_cost_4_years/1000:.0f}K by being conservative")
+print(f"  → Renting wins by ${abs(scenario2['difference'])/1000:.0f}K (${(abs(scenario2['difference']) - abs(scenario1['difference']))/1000:.0f}K worse than RSUs)")
 print()
 print("📊 Sell long-term investments:")
 print(f"  → Pay ${capital_gains_tax/1000:.0f}K in cap gains tax upfront")
 print(f"  → Renting wins by ${abs(scenario3['difference'])/1000:.0f}K (${(abs(scenario3['difference']) - abs(scenario1['difference']))/1000:.0f}K worse!)")
 print()
-print("The difference? That ${:.0f}K tax hit grows to ${:.0f}K over 30 years.".format(
+print()
+print("The cost of being conservative with HYSA? ${:.0f}K over 4 years compounds to ${:.0f}K gap.".format(
+    opportunity_cost_4_years/1000,
+    (abs(scenario2['difference']) - abs(scenario1['difference']))/1000
+))
+print()
+print("The cost of selling investments? ${:.0f}K tax hit compounds to ${:.0f}K gap.".format(
     capital_gains_tax/1000,
     (abs(scenario3['difference']) - abs(scenario1['difference']))/1000
 ))
 print()
-print("Down payment source creates a ${:.0f}K swing in outcomes.".format(
+print("Down payment source creates a ${:.0f}K swing in outcomes (best to worst).".format(
     (abs(scenario3['difference']) - abs(scenario1['difference']))/1000
 ))
 print()
