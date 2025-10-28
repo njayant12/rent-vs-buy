@@ -1,0 +1,29 @@
+{
+  "title": "Net Worth Composition at Year 5 Purchase",
+  "subtitle": "Starting with $438,700 portfolio, selling only what's needed",
+  "scenarios": [
+    {
+      "name": "Jubilee",
+      "invested": 379398,
+      "equity": 26600,
+      "total": 405998
+    },
+    {
+      "name": "20% Down",
+      "invested": 9129,
+      "equity": 380000,
+      "total": 389129
+    },
+    {
+      "name": "Renting",
+      "invested": 438700,
+      "equity": 0,
+      "total": 438700
+    }
+  ],
+  "insights": {
+    "jubilee_vs_traditional_invested": 370270,
+    "jubilee_vs_traditional_multiplier": 41.6,
+    "tax_savings": 16870
+  }
+}
