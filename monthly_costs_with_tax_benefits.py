@@ -49,8 +49,8 @@ RENTERS_INSURANCE_ANNUAL = 200
 # TAX ASSUMPTIONS (UPDATED)
 # ============================================================================
 
-# Married Filing Jointly - HIGH INCOME BUYERS
-FEDERAL_TAX_RATE = 0.24  # 24% bracket
+# Married Filing Jointly - HIGH INCOME BUYERS ($400K combined W-2)
+FEDERAL_TAX_RATE = 0.32  # 32% bracket ($400K puts them here)
 CA_TAX_RATE = 0.093  # 9.3% bracket
 
 # KEY ASSUMPTION: Buyers already have itemized deductions >= standard deduction
