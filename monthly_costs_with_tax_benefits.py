@@ -21,7 +21,10 @@ CONVENTIONAL_RATE = 0.0615
 # Property tax
 PROPERTY_TAX_RATE = 0.0118
 ANNUAL_INSURANCE = 1_500
-MAINTENANCE_RATE = 0.01
+
+# Maintenance - detailed calculation (see maintenance_calculation.py)
+# Baseline: $2,500/year + Roof: $1,000/year + Flooring: $3,000/year + Paint: $1,600/year
+ANNUAL_MAINTENANCE = 8_100
 
 # Jubilee model
 LAND_SHARE = 0.60
@@ -116,8 +119,7 @@ jubilee_monthly_land_lease = ANNUAL_LAND_LEASE / 12
 jubilee_annual_property_tax = HOME_PRICE * PROPERTY_TAX_RATE
 jubilee_monthly_property_tax = jubilee_annual_property_tax / 12
 jubilee_monthly_insurance = ANNUAL_INSURANCE / 12
-jubilee_annual_maintenance = HOME_PRICE * MAINTENANCE_RATE
-jubilee_monthly_maintenance = jubilee_annual_maintenance / 12
+jubilee_monthly_maintenance = ANNUAL_MAINTENANCE / 12
 
 jubilee_pretax_monthly = (jubilee_mortgage + jubilee_monthly_pmi +
                           jubilee_monthly_land_lease + jubilee_monthly_property_tax +
@@ -193,8 +195,7 @@ traditional_mortgage = calculate_mortgage_payment(traditional_loan, CONVENTIONAL
 traditional_annual_property_tax = HOME_PRICE * PROPERTY_TAX_RATE
 traditional_monthly_property_tax = traditional_annual_property_tax / 12
 traditional_monthly_insurance = ANNUAL_INSURANCE / 12
-traditional_annual_maintenance = HOME_PRICE * MAINTENANCE_RATE
-traditional_monthly_maintenance = traditional_annual_maintenance / 12
+traditional_monthly_maintenance = ANNUAL_MAINTENANCE / 12
 
 traditional_pretax_monthly = (traditional_mortgage + traditional_monthly_property_tax +
                              traditional_monthly_insurance + traditional_monthly_maintenance)
