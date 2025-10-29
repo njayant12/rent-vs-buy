@@ -46,20 +46,22 @@ MONTHLY_RENT = 5_800
 RENTERS_INSURANCE_ANNUAL = 200
 
 # ============================================================================
-# TAX ASSUMPTIONS (NEW)
+# TAX ASSUMPTIONS (UPDATED)
 # ============================================================================
 
-# Married Filing Jointly
-FEDERAL_TAX_RATE = 0.24  # 24% bracket (reasonable for $1.9M home buyer)
+# Married Filing Jointly - HIGH INCOME BUYERS
+FEDERAL_TAX_RATE = 0.24  # 24% bracket
 CA_TAX_RATE = 0.093  # 9.3% bracket
 
-# Standard deductions (2025 estimates)
-FEDERAL_STANDARD_DEDUCTION = 29_200
-CA_STANDARD_DEDUCTION = 10_726
+# KEY ASSUMPTION: Buyers already have itemized deductions >= standard deduction
+# (Charitable giving, state income taxes, etc.)
+# Therefore, mortgage interest and property tax are INCREMENTAL benefits
+# This is realistic for high-income buyers of $1.9M homes
 
 # SALT assumptions
 TOTAL_SALT = 40_000  # Total state/local taxes (state income tax + property tax)
 FEDERAL_SALT_CAP = 10_000  # Federal cap
+# Note: Property tax is part of SALT, so we can deduct it on both federal (capped) and CA
 
 # Mortgage interest deduction limit (federal)
 MORTGAGE_DEBT_LIMIT = 750_000  # Can only deduct interest on first $750k
@@ -128,39 +130,33 @@ print()
 jubilee_annual_interest = calculate_first_year_interest(jubilee_total_loan, FHA_RATE)
 print(f"  First year mortgage interest: ${jubilee_annual_interest:,.0f}")
 
-# Federal deductions
+# Federal deductions (INCREMENTAL - all mortgage interest + SALT deductible)
 jubilee_federal_mortgage_interest = min(jubilee_annual_interest,
                                        calculate_first_year_interest(MORTGAGE_DEBT_LIMIT, FHA_RATE))
-jubilee_federal_itemized = jubilee_federal_mortgage_interest + FEDERAL_SALT_CAP
-jubilee_federal_extra_deduction = max(0, jubilee_federal_itemized - FEDERAL_STANDARD_DEDUCTION)
-jubilee_federal_tax_savings_annual = jubilee_federal_extra_deduction * FEDERAL_TAX_RATE
+# Federal SALT is capped at $10K (includes property tax)
+jubilee_federal_property_tax_deduction = min(jubilee_annual_property_tax, FEDERAL_SALT_CAP)
+jubilee_federal_deductions = jubilee_federal_mortgage_interest + jubilee_federal_property_tax_deduction
+jubilee_federal_tax_savings_annual = jubilee_federal_deductions * FEDERAL_TAX_RATE
 jubilee_federal_tax_savings_monthly = jubilee_federal_tax_savings_annual / 12
 
 print()
-print(f"Federal Tax Benefit:")
+print(f"Federal Tax Benefit (INCREMENTAL):")
 print(f"  Mortgage interest (deductible): ${jubilee_federal_mortgage_interest:,.0f}")
-print(f"  SALT deduction (capped):        ${FEDERAL_SALT_CAP:,.0f}")
-print(f"  Total itemized:                 ${jubilee_federal_itemized:,.0f}")
-print(f"  vs Standard deduction:          ${FEDERAL_STANDARD_DEDUCTION:,.0f}")
-print(f"  Extra deduction:                ${jubilee_federal_extra_deduction:,.0f}")
+print(f"  Property tax (capped at $10K):  ${jubilee_federal_property_tax_deduction:,.0f}")
+print(f"  Total INCREMENTAL deductions:   ${jubilee_federal_deductions:,.0f}")
 print(f"  Tax savings @ {FEDERAL_TAX_RATE*100:.0f}%:         ${jubilee_federal_tax_savings_annual:,.0f}/year")
 print(f"  Monthly benefit:                ${jubilee_federal_tax_savings_monthly:,.0f}/month")
 
-# California deductions (no mortgage debt limit, full SALT deduction)
-jubilee_state_income_tax = TOTAL_SALT - jubilee_annual_property_tax
-jubilee_ca_itemized = jubilee_annual_interest + jubilee_annual_property_tax + jubilee_state_income_tax
-jubilee_ca_extra_deduction = max(0, jubilee_ca_itemized - CA_STANDARD_DEDUCTION)
-jubilee_ca_tax_savings_annual = jubilee_ca_extra_deduction * CA_TAX_RATE
+# California deductions (INCREMENTAL - no mortgage limit, full property tax deduction)
+jubilee_ca_deductions = jubilee_annual_interest + jubilee_annual_property_tax
+jubilee_ca_tax_savings_annual = jubilee_ca_deductions * CA_TAX_RATE
 jubilee_ca_tax_savings_monthly = jubilee_ca_tax_savings_annual / 12
 
 print()
-print(f"California State Tax Benefit:")
+print(f"California State Tax Benefit (INCREMENTAL):")
 print(f"  Mortgage interest:              ${jubilee_annual_interest:,.0f}")
 print(f"  Property tax:                   ${jubilee_annual_property_tax:,.0f}")
-print(f"  State income tax:               ${jubilee_state_income_tax:,.0f}")
-print(f"  Total itemized:                 ${jubilee_ca_itemized:,.0f}")
-print(f"  vs Standard deduction:          ${CA_STANDARD_DEDUCTION:,.0f}")
-print(f"  Extra deduction:                ${jubilee_ca_extra_deduction:,.0f}")
+print(f"  Total INCREMENTAL deductions:   ${jubilee_ca_deductions:,.0f}")
 print(f"  Tax savings @ {CA_TAX_RATE*100:.1f}%:           ${jubilee_ca_tax_savings_annual:,.0f}/year")
 print(f"  Monthly benefit:                ${jubilee_ca_tax_savings_monthly:,.0f}/month")
 
@@ -208,41 +204,35 @@ print()
 traditional_annual_interest = calculate_first_year_interest(traditional_loan, CONVENTIONAL_RATE)
 print(f"  First year mortgage interest (full loan): ${traditional_annual_interest:,.0f}")
 
-# Federal deductions (limited to interest on first $750k)
+# Federal deductions (INCREMENTAL - limited to interest on first $750k)
 traditional_federal_mortgage_interest = calculate_first_year_interest(min(traditional_loan, MORTGAGE_DEBT_LIMIT),
                                                                       CONVENTIONAL_RATE)
 print(f"  Deductible interest (first $750k):       ${traditional_federal_mortgage_interest:,.0f}")
 
-traditional_federal_itemized = traditional_federal_mortgage_interest + FEDERAL_SALT_CAP
-traditional_federal_extra_deduction = max(0, traditional_federal_itemized - FEDERAL_STANDARD_DEDUCTION)
-traditional_federal_tax_savings_annual = traditional_federal_extra_deduction * FEDERAL_TAX_RATE
+# Federal SALT is capped at $10K (includes property tax)
+traditional_federal_property_tax_deduction = min(traditional_annual_property_tax, FEDERAL_SALT_CAP)
+traditional_federal_deductions = traditional_federal_mortgage_interest + traditional_federal_property_tax_deduction
+traditional_federal_tax_savings_annual = traditional_federal_deductions * FEDERAL_TAX_RATE
 traditional_federal_tax_savings_monthly = traditional_federal_tax_savings_annual / 12
 
 print()
-print(f"Federal Tax Benefit:")
+print(f"Federal Tax Benefit (INCREMENTAL):")
 print(f"  Mortgage interest (deductible): ${traditional_federal_mortgage_interest:,.0f}")
-print(f"  SALT deduction (capped):        ${FEDERAL_SALT_CAP:,.0f}")
-print(f"  Total itemized:                 ${traditional_federal_itemized:,.0f}")
-print(f"  vs Standard deduction:          ${FEDERAL_STANDARD_DEDUCTION:,.0f}")
-print(f"  Extra deduction:                ${traditional_federal_extra_deduction:,.0f}")
+print(f"  Property tax (capped at $10K):  ${traditional_federal_property_tax_deduction:,.0f}")
+print(f"  Total INCREMENTAL deductions:   ${traditional_federal_deductions:,.0f}")
 print(f"  Tax savings @ {FEDERAL_TAX_RATE*100:.0f}%:         ${traditional_federal_tax_savings_annual:,.0f}/year")
 print(f"  Monthly benefit:                ${traditional_federal_tax_savings_monthly:,.0f}/month")
 
-# California deductions (no limit on mortgage interest, full SALT)
-traditional_state_income_tax = TOTAL_SALT - traditional_annual_property_tax
-traditional_ca_itemized = traditional_annual_interest + traditional_annual_property_tax + traditional_state_income_tax
-traditional_ca_extra_deduction = max(0, traditional_ca_itemized - CA_STANDARD_DEDUCTION)
-traditional_ca_tax_savings_annual = traditional_ca_extra_deduction * CA_TAX_RATE
+# California deductions (INCREMENTAL - no limit on mortgage interest, full property tax)
+traditional_ca_deductions = traditional_annual_interest + traditional_annual_property_tax
+traditional_ca_tax_savings_annual = traditional_ca_deductions * CA_TAX_RATE
 traditional_ca_tax_savings_monthly = traditional_ca_tax_savings_annual / 12
 
 print()
-print(f"California State Tax Benefit:")
+print(f"California State Tax Benefit (INCREMENTAL):")
 print(f"  Mortgage interest (full):       ${traditional_annual_interest:,.0f}")
 print(f"  Property tax:                   ${traditional_annual_property_tax:,.0f}")
-print(f"  State income tax:               ${traditional_state_income_tax:,.0f}")
-print(f"  Total itemized:                 ${traditional_ca_itemized:,.0f}")
-print(f"  vs Standard deduction:          ${CA_STANDARD_DEDUCTION:,.0f}")
-print(f"  Extra deduction:                ${traditional_ca_extra_deduction:,.0f}")
+print(f"  Total INCREMENTAL deductions:   ${traditional_ca_deductions:,.0f}")
 print(f"  Tax savings @ {CA_TAX_RATE*100:.1f}%:           ${traditional_ca_tax_savings_annual:,.0f}/year")
 print(f"  Monthly benefit:                ${traditional_ca_tax_savings_monthly:,.0f}/month")
 
@@ -362,6 +352,71 @@ print(f"20% Down,{traditional_pretax_monthly:.0f},{traditional_total_tax_benefit
 print(f"Renting,{renter_pretax_monthly:.0f},0,{renter_aftertax_monthly:.0f}")
 print()
 
+# ============================================================================
+# DETAILED BREAKDOWN TABLE
+# ============================================================================
+
+print("=" * 95)
+print("DETAILED MONTHLY COST BREAKDOWN (AFTER-TAX)")
+print("=" * 95)
+print()
+
+print(f"{'Component':<30} {'Jubilee':>18} {'20% Down':>18} {'Renting':>18}")
+print("─" * 95)
+
+# Rent
+print(f"{'Rent':<30} ${0:>17,.0f} ${0:>17,.0f} ${MONTHLY_RENT:>17,.0f}")
+
+# Mortgage P&I (before tax benefit)
+print(f"{'Mortgage P&I':<30} ${jubilee_mortgage:>17,.0f} ${traditional_mortgage:>17,.0f} ${0:>17,.0f}")
+
+# Mortgage interest tax benefit (show as negative)
+jubilee_mortgage_interest_monthly = jubilee_annual_interest / 12
+traditional_mortgage_interest_monthly = traditional_annual_interest / 12
+jubilee_interest_tax_benefit = (jubilee_federal_mortgage_interest + jubilee_annual_interest) * (FEDERAL_TAX_RATE * jubilee_federal_mortgage_interest / max(jubilee_federal_mortgage_interest, 1) + CA_TAX_RATE) / 12
+traditional_interest_tax_benefit = (traditional_federal_mortgage_interest + traditional_annual_interest) * (FEDERAL_TAX_RATE * traditional_federal_mortgage_interest / max(traditional_federal_mortgage_interest, 1) + CA_TAX_RATE) / 12
+
+# Actually, let me calculate this more clearly
+jubilee_mortgage_interest_fed_benefit = (jubilee_federal_mortgage_interest * FEDERAL_TAX_RATE) / 12
+jubilee_mortgage_interest_ca_benefit = (jubilee_annual_interest * CA_TAX_RATE) / 12
+jubilee_mortgage_interest_tax_benefit = jubilee_mortgage_interest_fed_benefit + jubilee_mortgage_interest_ca_benefit
+
+traditional_mortgage_interest_fed_benefit = (traditional_federal_mortgage_interest * FEDERAL_TAX_RATE) / 12
+traditional_mortgage_interest_ca_benefit = (traditional_annual_interest * CA_TAX_RATE) / 12
+traditional_mortgage_interest_tax_benefit = traditional_mortgage_interest_fed_benefit + traditional_mortgage_interest_ca_benefit
+
+print(f"{'  - Mortgage interest benefit':<30} -${jubilee_mortgage_interest_tax_benefit:>16,.0f} -${traditional_mortgage_interest_tax_benefit:>16,.0f} ${0:>17,.0f}")
+
+# PMI
+print(f"{'PMI':<30} ${jubilee_monthly_pmi:>17,.0f} ${0:>17,.0f} ${0:>17,.0f}")
+
+# Land lease
+print(f"{'Land lease':<30} ${jubilee_monthly_land_lease:>17,.0f} ${0:>17,.0f} ${0:>17,.0f}")
+
+# Property tax (before tax benefit)
+print(f"{'Property tax':<30} ${jubilee_monthly_property_tax:>17,.0f} ${traditional_monthly_property_tax:>17,.0f} ${0:>17,.0f}")
+
+# Property tax benefit
+jubilee_property_tax_fed_benefit = (jubilee_federal_property_tax_deduction * FEDERAL_TAX_RATE) / 12
+jubilee_property_tax_ca_benefit = (jubilee_annual_property_tax * CA_TAX_RATE) / 12
+jubilee_property_tax_tax_benefit = jubilee_property_tax_fed_benefit + jubilee_property_tax_ca_benefit
+
+traditional_property_tax_fed_benefit = (traditional_federal_property_tax_deduction * FEDERAL_TAX_RATE) / 12
+traditional_property_tax_ca_benefit = (traditional_annual_property_tax * CA_TAX_RATE) / 12
+traditional_property_tax_tax_benefit = traditional_property_tax_fed_benefit + traditional_property_tax_ca_benefit
+
+print(f"{'  - Property tax benefit':<30} -${jubilee_property_tax_tax_benefit:>16,.0f} -${traditional_property_tax_tax_benefit:>16,.0f} ${0:>17,.0f}")
+
+# Insurance
+print(f"{'Insurance':<30} ${jubilee_monthly_insurance:>17,.0f} ${traditional_monthly_insurance:>17,.0f} ${renter_monthly_insurance:>17,.0f}")
+
+# Maintenance
+print(f"{'Maintenance':<30} ${jubilee_monthly_maintenance:>17,.0f} ${traditional_monthly_maintenance:>17,.0f} ${0:>17,.0f}")
+
+print("─" * 95)
+print(f"{'TOTAL AFTER-TAX MONTHLY':<30} ${jubilee_aftertax_monthly:>17,.0f} ${traditional_aftertax_monthly:>17,.0f} ${renter_aftertax_monthly:>17,.0f}")
+print()
+
 print("=" * 95)
 print("TAX ASSUMPTIONS")
 print("=" * 95)
@@ -369,9 +424,10 @@ print()
 print(f"Filing status: Married Filing Jointly")
 print(f"Federal tax rate: {FEDERAL_TAX_RATE*100:.0f}%")
 print(f"CA tax rate: {CA_TAX_RATE*100:.1f}%")
-print(f"Federal standard deduction: ${FEDERAL_STANDARD_DEDUCTION:,.0f}")
-print(f"CA standard deduction: ${CA_STANDARD_DEDUCTION:,.0f}")
-print(f"Total SALT (state + property tax): ${TOTAL_SALT:,.0f}")
+print()
+print(f"KEY ASSUMPTION: Buyers already itemize deductions >= standard deduction")
+print(f"Therefore, ALL mortgage interest and property tax deductions are INCREMENTAL benefits")
+print()
 print(f"Federal SALT cap: ${FEDERAL_SALT_CAP:,.0f}")
 print(f"Mortgage debt limit (federal): ${MORTGAGE_DEBT_LIMIT:,.0f}")
 print()
