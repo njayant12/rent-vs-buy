@@ -14,10 +14,10 @@ Use the data from `monthly_costs_chart_data.csv`
 
 **Stacks (bottom to top):**
 
-#### Jubilee Bar ($14,208 total):
+#### Jubilee Bar ($15,158 total):
 1. Mortgage (blue): $4,595
 2. PMI (orange): $336
-3. Land Lease (red): $5,700 ← **Most distinctive**
+3. Land Lease (red): $6,650 ← **Most distinctive**
 4. Property Tax (purple): $1,868
 5. Insurance (green): $125
 6. Maintenance (yellow): $1,583
@@ -53,8 +53,8 @@ Rent:          #64748b (Gray)       - Renting cost
 ## Key Annotations to Add
 
 ### On Jubilee Bar:
-- Arrow pointing to Land Lease segment: "**$5,700/mo to Jubilee**"
-- Total label: "$14,208/mo"
+- Arrow pointing to Land Lease segment: "**$6,650/mo to Jubilee**"
+- Total label: "$15,158/mo"
 
 ### On 20% Down Bar:
 - Arrow pointing to Mortgage segment: "**$9,260/mo mortgage**"
@@ -67,7 +67,7 @@ Rent:          #64748b (Gray)       - Renting cost
 "**First Year Average Monthly Costs: $1.9M SF Home**"
 
 ### Chart Subtitle:
-"Jubilee costs $1,371/mo more than traditional despite lower mortgage"
+"Jubilee costs $2,321/mo more than traditional despite lower mortgage"
 
 ---
 
@@ -77,7 +77,7 @@ Instead of stacked, show each component as a separate grouped bar for easier com
 
 **Component Groups:**
 1. Mortgage: [Jubilee: $4,595] [Traditional: $9,260] [Renting: $0]
-2. Land Lease: [Jubilee: $5,700] [Traditional: $0] [Renting: $0]
+2. Land Lease: [Jubilee: $6,650] [Traditional: $0] [Renting: $0]
 3. Other Costs: [Jubilee: $3,913] [Traditional: $3,577] [Renting: $17]
 
 This makes the land lease stand out more clearly.
@@ -92,7 +92,7 @@ This makes the land lease stand out more clearly.
 - Jubilee bar is TALLEST (surprising!)
 
 **The Surprise:**
-Most people expect Jubilee to be cheaper monthly. The chart shows it's actually **$1,371/mo more expensive** due to the land lease.
+Most people expect Jubilee to be cheaper monthly. The chart shows it's actually **$2,321/mo more expensive** due to the land lease.
 
 **The Value Proposition:**
 Jubilee's advantage isn't monthly cost - it's **capital preservation** ($370K more invested).
@@ -127,7 +127,7 @@ This makes comparison easier for presentations.
 ```
 Monthly Housing Payment:
   Renting:     $5,800 (rent)
-  Jubilee:     $10,631 (mortgage + PMI + land lease)
+  Jubilee:     $11,581 (mortgage + PMI + land lease)
   Traditional: $9,260 (mortgage only)
 
 Taxes & Insurance:
@@ -142,7 +142,7 @@ Maintenance:
 
 TOTAL:
   Renting:     $5,817
-  Jubilee:     $14,208
+  Jubilee:     $15,158
   Traditional: $12,837
 ```
 
@@ -156,13 +156,13 @@ When presenting this chart:
 
 2. **"Traditional 20% down costs $12,837/mo"** - Standard ownership costs
 
-3. **"Jubilee costs $14,208/mo - $1,371 MORE than traditional"** - This surprises people!
+3. **"Jubilee costs $15,158/mo - $2,321 MORE than traditional"** - This surprises people!
 
-4. **"Why? The $5,700/mo land lease"** - Point to the red segment
+4. **"Why? The $6,650/mo land lease"** - Point to the red segment
 
 5. **"But remember: Jubilee keeps $370K more invested"** - That compounds to $2.82M over 30 years
 
-6. **"Monthly cost vs capital preservation"** - The core trade-off
+6. **"The trade-off nearly cancels out"** - Upfront benefit ($2.82M) vs monthly cost ($2.79M if invested)
 
 ---
 
@@ -171,13 +171,13 @@ When presenting this chart:
 ### Variant 1: Annual Costs
 Multiply all monthly numbers by 12:
 - Renting: $69,800/year
-- Jubilee: $170,490/year
+- Jubilee: $181,896/year
 - Traditional: $154,043/year
 
 ### Variant 2: 30-Year Total
 Show cumulative cost over 30 years (without factoring in appreciation or investment returns):
 - Renting: $2.09M
-- Jubilee: $5.11M
+- Jubilee: $5.46M
 - Traditional: $4.62M
 
 *(But this is misleading without accounting for equity and appreciation)*

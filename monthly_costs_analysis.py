@@ -42,9 +42,9 @@ HOUSE_SHARE = 0.40  # 40% house value
 LAND_VALUE = HOME_PRICE * LAND_SHARE  # $1,140,000
 HOUSE_VALUE = HOME_PRICE * HOUSE_SHARE  # $760,000
 
-# Jubilee land lease (based on research: 5-7% annual return on land)
-# Using 6% as middle estimate
-LAND_LEASE_RATE = 0.06
+# Jubilee land lease (verified: $3,500/mo for ~$1M property = 7% annual)
+# Using 7% based on actual Jubilee rates
+LAND_LEASE_RATE = 0.07
 ANNUAL_LAND_LEASE = LAND_VALUE * LAND_LEASE_RATE
 
 # FHA loan details
@@ -336,7 +336,7 @@ print(f"  Applied to full property value for both scenarios")
 print()
 print(f"Jubilee Land Lease:")
 print(f"  Land value: ${LAND_VALUE:,.0f} (60% of ${HOME_PRICE:,.0f})")
-print(f"  Annual return rate: {LAND_LEASE_RATE*100:.0f}% (based on Jubilee investor model)")
+print(f"  Annual return rate: {LAND_LEASE_RATE*100:.0f}% (verified from Jubilee: $3,500/mo for ~$1M property)")
 print(f"  Monthly lease: ${jubilee_monthly_land_lease:,.0f}")
 print()
 print(f"Insurance:")

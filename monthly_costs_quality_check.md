@@ -36,13 +36,13 @@
 ### 3. Land Lease ✓
 **Jubilee Only:**
 - Land value: $1,140,000 (60% of $1.9M)
-- Annual lease rate: 6% (based on Jubilee investor return model)
-- Annual lease: $68,400
-- Monthly lease: **$5,700**
+- Annual lease rate: 7% (verified from actual Jubilee rates)
+- Annual lease: $79,800
+- Monthly lease: **$6,650**
 
-**Calculation verified:** Based on Jubilee Homes web research showing 7% return model. Used 6% as conservative estimate.
+**Calculation verified:** Based on Jubilee actual rates of ~$3,500/mo for $1M property, which equals 7% annual return.
 
-**Sources:** Jubilee Homes website, ground lease research
+**Sources:** Jubilee Homes actual customer data
 
 ---
 
@@ -103,12 +103,12 @@
 |---|---|---|---|
 | Mortgage (P&I) | $4,595 | $9,260 | $0 |
 | PMI | $336 | $0 | $0 |
-| Land Lease | $5,700 | $0 | $0 |
+| Land Lease | $6,650 | $0 | $0 |
 | Property Tax | $1,868 | $1,868 | $0 |
 | Insurance | $125 | $125 | $17 |
 | Maintenance | $1,583 | $1,583 | $0 |
 | Rent | $0 | $0 | $5,800 |
-| **TOTAL** | **$14,208** | **$12,837** | **$5,817** |
+| **TOTAL** | **$15,158** | **$12,837** | **$5,817** |
 
 ---
 
@@ -117,17 +117,17 @@
 ### Monthly Cost Ranking:
 1. **Renting: $5,817/month** (baseline)
 2. **Traditional: $12,837/month** (+$7,020 vs renting)
-3. **Jubilee: $14,208/month** (+$8,391 vs renting)
+3. **Jubilee: $15,158/month** (+$9,341 vs renting)
 
 ### Surprising Result:
-**Jubilee costs $1,371/month MORE than traditional** ($16,447/year more)
+**Jubilee costs $2,321/month MORE than traditional** ($27,847/year more)
 
 ### Why?
-The $5,700/month land lease is expensive. It exceeds the savings from:
+The $6,650/month land lease is expensive. It exceeds the savings from:
 - Lower mortgage ($4,666 less than traditional)
 - PMI cost ($336)
 
-**Net:** Traditional saves $1,371/month on monthly costs
+**Net:** Traditional saves $2,321/month on monthly costs
 
 ---
 
@@ -137,16 +137,16 @@ The $5,700/month land lease is expensive. It exceeds the savings from:
 ✓ Jubilee keeps $370K more invested
 
 ### Ongoing (Monthly):
-✗ Jubilee costs $1,371/month more
+✗ Jubilee costs $2,321/month more
 
 ### The Question:
-Does $370K invested at 7% for 30 years justify paying $1,371/month more?
+Does $370K invested at 7% for 30 years justify paying $2,321/month more?
 
 **Math:**
 - $370K @ 7% for 30 years = $2.82M
-- $1,371/month @ 7% for 30 years = $1.65M (if invested instead)
+- $2,321/month @ 7% for 30 years = $2.79M (if invested instead)
 
-**Rough answer:** The $370K upfront advantage is worth ~$1.17M more than the monthly cost disadvantage over 30 years.
+**Rough answer:** The $370K upfront advantage (+$2.82M) and the monthly cost disadvantage (-$2.79M) nearly cancel out over 30 years. **The financial benefit is marginal.**
 
 ---
 
