@@ -2,16 +2,18 @@
 
 ## Executive Summary
 
-For a $1.9M San Francisco home with married filing jointly taxpayers in the 24% federal / 9.3% CA brackets:
+For a $1.9M San Francisco home with married filing jointly taxpayers in the 32% federal / 9.3% CA brackets:
 
 | Scenario | Pre-Tax Monthly | Tax Benefit | **After-Tax Monthly** |
 |---|---:|---:|---:|
 | **Renting** | $5,817 | $0 | **$5,817** |
-| **Traditional 20% Down** | $12,837 | -$1,490 | **$11,347** |
-| **Jubilee** | $15,158 | -$1,137 | **$14,020** |
+| **Traditional 20% Down** | $12,837 | -$2,028 | **$10,809** |
+| **Jubilee** | $15,158 | -$2,046 | **$13,112** |
 
 ### Key Finding:
-**After accounting for tax benefits, Jubilee costs $2,673/month MORE than traditional** ($32,079/year).
+**After accounting for tax benefits, Jubilee costs $2,303/month MORE than traditional** ($27,634/year).
+
+**However, the 30-year outcome is essentially a TIE** because Jubilee keeps $370K more invested upfront.
 
 ---
 
@@ -22,11 +24,11 @@ For a $1.9M San Francisco home with married filing jointly taxpayers in the 24% 
 - If invested @ 7% for 30 years = **$2.82M**
 
 ### Ongoing (Monthly):
-❌ **Traditional advantage:** $2,673/month lower after-tax cost
-- If invested @ 7% for 30 years = **$3.21M**
+❌ **Traditional advantage:** $2,303/month lower after-tax cost
+- If invested @ 7% for 30 years = **$2.77M**
 
 ### **Net Result:**
-Traditional comes out ahead by approximately **$390K** over 30 years, even accounting for Jubilee's capital preservation advantage.
+**Nearly a TIE!** Jubilee comes out ahead by approximately **$50K** over 30 years.
 
 ---
 
@@ -47,27 +49,24 @@ Traditional comes out ahead by approximately **$390K** over 30 years, even accou
 
 ---
 
-### Tax Benefits (MFJ, 24% Fed / 9.3% CA)
+### Tax Benefits (MFJ, 32% Fed / 9.3% CA)
 
 #### Jubilee Tax Deductions:
 **Federal:**
-- Mortgage interest: $46,640/year
+- Mortgage interest: $46,640/year (all deductible - under $750K limit)
 - SALT deduction (capped): $10,000/year
 - Total itemized: $56,640
 - vs Standard: $29,200
 - Extra deduction: $27,440
-- **Federal tax savings: $549/month**
+- **Federal tax savings: $1,510/month**
 
 **California:**
-- Mortgage interest: $46,640/year
+- Mortgage interest: $46,640/year (all deductible - under $750K limit)
 - Property tax: $22,420/year
-- State income tax: $17,580/year (part of $40K total SALT)
-- Total itemized: $86,640
-- vs Standard: $10,726
-- Extra deduction: $75,914
-- **CA tax savings: $588/month**
+- Total itemized: $69,060
+- **CA tax savings: $535/month**
 
-**Total Jubilee tax benefit: $1,137/month**
+**Total Jubilee tax benefit: $2,046/month**
 
 ---
 
@@ -78,18 +77,15 @@ Traditional comes out ahead by approximately **$390K** over 30 years, even accou
 - Total itemized: $56,125
 - vs Standard: $29,200
 - Extra deduction: $26,925
-- **Federal tax savings: $539/month**
+- **Federal tax savings: $1,497/month**
 
 **California:**
-- Mortgage interest (full $1.52M): $93,480/year
+- Mortgage interest (first $750K only): $46,125/year
 - Property tax: $22,420/year
-- State income tax: $17,580/year
-- Total itemized: $133,480
-- vs Standard: $10,726
-- Extra deduction: $122,754
-- **CA tax savings: $951/month**
+- Total itemized: $68,545
+- **CA tax savings: $531/month**
 
-**Total Traditional tax benefit: $1,490/month**
+**Total Traditional tax benefit: $2,028/month**
 
 ---
 
@@ -100,11 +96,14 @@ Traditional comes out ahead by approximately **$390K** over 30 years, even accou
 
 ---
 
-## Why Traditional Gets More Tax Benefits
+## Why Tax Benefits Are Nearly Identical Now
 
-1. **Larger mortgage = more interest** ($93,480 vs $46,640 annually)
-2. **CA has no mortgage debt limit** (federal limits deduction to first $750K)
-3. **Traditional saves $353/month MORE** in taxes than Jubilee
+**KEY UPDATE:** California conforms to the federal $750K mortgage debt limit for loans originated after December 15, 2017.
+
+1. **Both scenarios hit the $750K cap** on BOTH federal and CA taxes
+2. **Jubilee loan ($746K)** is just under the limit - all interest deductible
+3. **Traditional loan ($1.52M)** is way over the limit - only first $750K deductible
+4. **Result:** Tax benefits are essentially identical (Jubilee actually gets $18/mo MORE)
 
 ---
 
@@ -115,13 +114,15 @@ Traditional comes out ahead by approximately **$390K** over 30 years, even accou
 - ✅ Keep $370K more invested upfront
 - ✅ Lower monthly savings requirement to buy
 - ✅ Access to homeownership with less capital
+- ✅ Nearly identical tax benefits to traditional
+- ✅ **~$50K better outcome over 30 years**
 
 ### What Jubilee Costs:
 - ❌ $6,650/month land lease (7% of $1.14M land value)
-- ❌ $2,673/month higher after-tax cost vs traditional
+- ❌ $2,303/month higher after-tax cost vs traditional
 - ❌ Only own 40% of property
 - ❌ Only get 40% of appreciation
-- ❌ Smaller tax benefits
+- ❌ Need to be comfortable with ground lease model
 
 ### The Math Over 30 Years:
 
@@ -129,9 +130,9 @@ Traditional comes out ahead by approximately **$390K** over 30 years, even accou
 - $370K invested @ 7% for 30 years = $2.82M
 
 **Traditional's monthly advantage:**
-- $2,673/month savings @ 7% for 30 years = $3.21M
+- $2,303/month savings @ 7% for 30 years = $2.77M
 
-**Winner: Traditional by ~$390K** (plus you own 100% vs 40%)
+**Winner: Jubilee by ~$50K** (but you only own 40% vs 100%)
 
 ---
 
@@ -140,15 +141,17 @@ Traditional comes out ahead by approximately **$390K** over 30 years, even accou
 Jubilee is better if:
 1. **You can't access $370K in capital** (even with stock liquidation)
 2. **You need homeownership NOW** for personal reasons
-3. **You value liquidity** over long-term wealth maximization
+3. **You value liquidity** over ownership percentage
 4. **You plan to leave SF** within 5-10 years (minimize commitment)
-5. **You expect extraordinary returns** on your invested capital (>15% consistently)
+5. **You're comfortable with ground lease** model
+6. **You want to optimize pure financial returns** - it's now ~$50K better over 30 years
 
 Jubilee is worse if:
-1. **You can afford 20% down** (have the $370K available)
-2. **You're purely optimizing wealth** over 30 years
-3. **You want maximum home equity** and appreciation
-4. **You plan to stay long-term** (30+ years)
+1. **You want 100% ownership** and full appreciation
+2. **You're uncomfortable with ground lease** structure
+3. **You have the $370K available** and prefer building full equity
+4. **You want maximum home equity** and appreciation
+5. **You're skeptical of Jubilee's long-term viability** as a company
 
 ---
 
@@ -157,15 +160,15 @@ Jubilee is worse if:
 | Assumption | Value |
 |---|---|
 | Filing status | Married Filing Jointly |
-| Federal tax bracket | 24% |
+| Federal tax bracket | 32% |
 | California tax bracket | 9.3% |
 | Federal standard deduction | $29,200 |
 | CA standard deduction | $10,726 |
-| Total SALT (income + property) | $40,000 |
 | Federal SALT cap | $10,000 |
-| Mortgage interest limit (fed) | $750,000 |
+| Mortgage interest limit (federal) | $750,000 |
+| Mortgage interest limit (CA) | $750,000 (conforms to federal for post-2017 loans) |
 
-**These assumptions apply to high-income earners buying a $1.9M home, which is appropriate for the scenario.**
+**These assumptions apply to high-income earners ($400K combined W-2) buying a $1.9M home.**
 
 ---
 
@@ -182,15 +185,15 @@ Renting:     $5,817
 
 **Tax Benefits (show as negative/green segment):**
 ```
-Jubilee:     -$1,137
-Traditional: -$1,490
+Jubilee:     -$2,046
+Traditional: -$2,028
 Renting:     -$0
 ```
 
 **After-Tax Costs (net height):**
 ```
-Jubilee:     $14,020
-Traditional: $11,347
+Jubilee:     $13,112
+Traditional: $10,809
 Renting:     $5,817
 ```
 
@@ -205,12 +208,17 @@ This visually shows how taxes reduce the effective cost.
 
 ## Bottom Line
 
-**Jubilee is a valuable option for accessing homeownership with limited capital, but it's not the financially optimal choice for buyers who can afford a traditional 20% down payment.**
+**Jubilee is now a compelling option even for buyers who can afford a traditional 20% down payment.**
 
 Over 30 years:
-- Traditional is ~$390K better financially
+- Jubilee is ~$50K better financially (due to $370K kept invested)
 - Traditional owns 100% of home (vs 40%)
-- Traditional gets larger tax benefits
-- Traditional has lower monthly cost
+- Traditional builds full equity and gets full appreciation
+- Tax benefits are essentially identical
 
-**Jubilee's value is in accessibility, not financial optimization.**
+**The decision comes down to:**
+- **Ownership vs Liquidity:** Do you prefer 100% ownership or keeping more capital invested?
+- **Risk tolerance:** Are you comfortable with the ground lease model?
+- **Time horizon:** Planning to stay long-term or move in 5-10 years?
+
+**Jubilee's value proposition has significantly strengthened with the corrected CA tax analysis. It's now nearly financially equivalent (actually slightly better) for high-income earners, while still offering the accessibility advantage for those with less capital.**

@@ -63,8 +63,9 @@ TOTAL_SALT = 40_000  # Total state/local taxes (state income tax + property tax)
 FEDERAL_SALT_CAP = 10_000  # Federal cap
 # Note: Property tax is part of SALT, so we can deduct it on both federal (capped) and CA
 
-# Mortgage interest deduction limit (federal)
-MORTGAGE_DEBT_LIMIT = 750_000  # Can only deduct interest on first $750k
+# Mortgage interest deduction limits (for loans after Dec 15, 2017)
+FEDERAL_MORTGAGE_DEBT_LIMIT = 750_000  # Federal: Can only deduct interest on first $750k
+CA_MORTGAGE_DEBT_LIMIT = 750_000  # California: Conforms to federal $750k for post-2017 loans
 
 # ============================================================================
 # HELPER FUNCTIONS
@@ -130,9 +131,9 @@ print()
 jubilee_annual_interest = calculate_first_year_interest(jubilee_total_loan, FHA_RATE)
 print(f"  First year mortgage interest: ${jubilee_annual_interest:,.0f}")
 
-# Federal deductions (INCREMENTAL - all mortgage interest + SALT deductible)
+# Federal deductions (INCREMENTAL - limited to first $750K of debt)
 jubilee_federal_mortgage_interest = min(jubilee_annual_interest,
-                                       calculate_first_year_interest(MORTGAGE_DEBT_LIMIT, FHA_RATE))
+                                       calculate_first_year_interest(FEDERAL_MORTGAGE_DEBT_LIMIT, FHA_RATE))
 # Federal SALT is capped at $10K (includes property tax)
 jubilee_federal_property_tax_deduction = min(jubilee_annual_property_tax, FEDERAL_SALT_CAP)
 jubilee_federal_deductions = jubilee_federal_mortgage_interest + jubilee_federal_property_tax_deduction
@@ -147,15 +148,17 @@ print(f"  Total INCREMENTAL deductions:   ${jubilee_federal_deductions:,.0f}")
 print(f"  Tax savings @ {FEDERAL_TAX_RATE*100:.0f}%:         ${jubilee_federal_tax_savings_annual:,.0f}/year")
 print(f"  Monthly benefit:                ${jubilee_federal_tax_savings_monthly:,.0f}/month")
 
-# California deductions (INCREMENTAL - no mortgage limit, full property tax deduction)
-jubilee_ca_deductions = jubilee_annual_interest + jubilee_annual_property_tax
+# California deductions (INCREMENTAL - limited to first $1M of debt, full property tax)
+jubilee_ca_mortgage_interest = min(jubilee_annual_interest,
+                                   calculate_first_year_interest(CA_MORTGAGE_DEBT_LIMIT, FHA_RATE))
+jubilee_ca_deductions = jubilee_ca_mortgage_interest + jubilee_annual_property_tax
 jubilee_ca_tax_savings_annual = jubilee_ca_deductions * CA_TAX_RATE
 jubilee_ca_tax_savings_monthly = jubilee_ca_tax_savings_annual / 12
 
 print()
 print(f"California State Tax Benefit (INCREMENTAL):")
-print(f"  Mortgage interest:              ${jubilee_annual_interest:,.0f}")
-print(f"  Property tax:                   ${jubilee_annual_property_tax:,.0f}")
+print(f"  Mortgage interest (capped at $750k): ${jubilee_ca_mortgage_interest:,.0f}")
+print(f"  Property tax:                      ${jubilee_annual_property_tax:,.0f}")
 print(f"  Total INCREMENTAL deductions:   ${jubilee_ca_deductions:,.0f}")
 print(f"  Tax savings @ {CA_TAX_RATE*100:.1f}%:           ${jubilee_ca_tax_savings_annual:,.0f}/year")
 print(f"  Monthly benefit:                ${jubilee_ca_tax_savings_monthly:,.0f}/month")
@@ -205,7 +208,7 @@ traditional_annual_interest = calculate_first_year_interest(traditional_loan, CO
 print(f"  First year mortgage interest (full loan): ${traditional_annual_interest:,.0f}")
 
 # Federal deductions (INCREMENTAL - limited to interest on first $750k)
-traditional_federal_mortgage_interest = calculate_first_year_interest(min(traditional_loan, MORTGAGE_DEBT_LIMIT),
+traditional_federal_mortgage_interest = calculate_first_year_interest(min(traditional_loan, FEDERAL_MORTGAGE_DEBT_LIMIT),
                                                                       CONVENTIONAL_RATE)
 print(f"  Deductible interest (first $750k):       ${traditional_federal_mortgage_interest:,.0f}")
 
@@ -223,15 +226,18 @@ print(f"  Total INCREMENTAL deductions:   ${traditional_federal_deductions:,.0f}
 print(f"  Tax savings @ {FEDERAL_TAX_RATE*100:.0f}%:         ${traditional_federal_tax_savings_annual:,.0f}/year")
 print(f"  Monthly benefit:                ${traditional_federal_tax_savings_monthly:,.0f}/month")
 
-# California deductions (INCREMENTAL - no limit on mortgage interest, full property tax)
-traditional_ca_deductions = traditional_annual_interest + traditional_annual_property_tax
+# California deductions (INCREMENTAL - limited to first $750k, full property tax)
+traditional_ca_mortgage_interest = calculate_first_year_interest(min(traditional_loan, CA_MORTGAGE_DEBT_LIMIT),
+                                                                 CONVENTIONAL_RATE)
+print(f"  Deductible CA interest (first $750k):   ${traditional_ca_mortgage_interest:,.0f}")
+traditional_ca_deductions = traditional_ca_mortgage_interest + traditional_annual_property_tax
 traditional_ca_tax_savings_annual = traditional_ca_deductions * CA_TAX_RATE
 traditional_ca_tax_savings_monthly = traditional_ca_tax_savings_annual / 12
 
 print()
 print(f"California State Tax Benefit (INCREMENTAL):")
-print(f"  Mortgage interest (full):       ${traditional_annual_interest:,.0f}")
-print(f"  Property tax:                   ${traditional_annual_property_tax:,.0f}")
+print(f"  Mortgage interest (capped at $750k): ${traditional_ca_mortgage_interest:,.0f}")
+print(f"  Property tax:                      ${traditional_annual_property_tax:,.0f}")
 print(f"  Total INCREMENTAL deductions:   ${traditional_ca_deductions:,.0f}")
 print(f"  Tax savings @ {CA_TAX_RATE*100:.1f}%:           ${traditional_ca_tax_savings_annual:,.0f}/year")
 print(f"  Monthly benefit:                ${traditional_ca_tax_savings_monthly:,.0f}/month")
@@ -429,5 +435,6 @@ print(f"KEY ASSUMPTION: Buyers already itemize deductions >= standard deduction"
 print(f"Therefore, ALL mortgage interest and property tax deductions are INCREMENTAL benefits")
 print()
 print(f"Federal SALT cap: ${FEDERAL_SALT_CAP:,.0f}")
-print(f"Mortgage debt limit (federal): ${MORTGAGE_DEBT_LIMIT:,.0f}")
+print(f"Mortgage debt limit (federal): ${FEDERAL_MORTGAGE_DEBT_LIMIT:,.0f}")
+print(f"Mortgage debt limit (California): ${CA_MORTGAGE_DEBT_LIMIT:,.0f}")
 print()

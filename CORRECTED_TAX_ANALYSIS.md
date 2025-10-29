@@ -2,9 +2,10 @@
 
 ## Updated Assumptions
 - **Income:** $400K combined W-2 (Married Filing Jointly)
-- **Federal tax bracket:** 32% (was 24%)
+- **Federal tax bracket:** 32%
 - **CA tax bracket:** 9.3%
 - **Incremental deductions:** All mortgage interest and property tax are on top of existing itemized deductions
+- **CA mortgage debt limit:** $750K (conforms to federal for post-2017 loans)
 
 ---
 
@@ -13,10 +14,10 @@
 | Scenario | **After-Tax Monthly Cost** |
 |---|---:|
 | **Renting** | **$5,817** |
-| **Traditional 20% Down** | **$10,442** |
+| **Traditional 20% Down** | **$10,809** |
 | **Jubilee** | **$13,112** |
 
-**Jubilee costs $2,670/month MORE than traditional** ($32,040/year)
+**Jubilee costs $2,303/month MORE than traditional** ($27,634/year)
 
 ---
 
@@ -34,7 +35,7 @@
 | **Insurance** | $125 | $125 | $17 |
 | **Maintenance** | $1,583 | $1,583 | $0 |
 | **═════════════** | **═══════** | **═══════** | **═══════** |
-| **TOTAL AFTER-TAX** | **$13,112** | **$10,442** | **$5,817** |
+| **TOTAL AFTER-TAX** | **$13,112** | **$10,809** | **$5,817** |
 
 ---
 
@@ -42,7 +43,7 @@
 
 ### Federal Benefits (NEARLY IDENTICAL!)
 
-You were right - federal mortgage interest deduction is capped at $750K of debt:
+Federal mortgage interest deduction is capped at $750K of debt:
 
 | | Jubilee | Traditional |
 |---|---:|---:|
@@ -54,28 +55,28 @@ You were right - federal mortgage interest deduction is capped at $750K of debt:
 
 **Federal benefit difference: Only $13/month!**
 
-### California Benefits (BIG DIFFERENCE!)
+### California Benefits (NOW ALSO NEARLY IDENTICAL!)
 
-California has NO mortgage debt limit:
+**KEY UPDATE:** California conforms to the federal $750K mortgage debt limit for loans originated after December 15, 2017:
 
 | | Jubilee | Traditional |
 |---|---:|---:|
-| **Mortgage interest** | $46,640 | $93,480 (full amount!) |
+| **Mortgage interest (deductible)** | $46,640 | $46,125 (first $750K only) |
 | **Property tax** | $22,420 | $22,420 |
-| **Total CA deductions** | $69,060 | $115,900 |
-| **CA tax savings @ 9.3%** | **$535/mo** | **$898/mo** |
+| **Total CA deductions** | $69,060 | $68,545 |
+| **CA tax savings @ 9.3%** | **$535/mo** | **$531/mo** |
 
-**CA benefit difference: $363/month more for traditional**
+**CA benefit difference: Only $4/month more for Jubilee!**
 
 ### Total Tax Benefits
 
 | Scenario | Federal | California | **Total** |
 |---|---:|---:|---:|
-| **Jubilee** | $1,510/mo | $535/mo | **$2,045/mo** |
-| **Traditional** | $1,497/mo | $898/mo | **$2,395/mo** |
-| **Difference** | -$13/mo | +$363/mo | **+$350/mo** |
+| **Jubilee** | $1,510/mo | $535/mo | **$2,046/mo** |
+| **Traditional** | $1,497/mo | $531/mo | **$2,028/mo** |
+| **Difference** | -$13/mo | -$4/mo | **-$18/mo** |
 
-**The entire tax benefit difference comes from California state taxes!**
+**Tax benefits are now essentially identical! Jubilee actually gets $18/month MORE in tax benefits because its $746K loan is just under the limit, while traditional only gets deductions on the first $750K of its $1.52M loan.**
 
 ---
 
@@ -100,49 +101,60 @@ California has NO mortgage debt limit:
 
 ---
 
-## Updated 30-Year Math (with 32% tax rate)
+## Updated 30-Year Math (with 32% tax rate and corrected CA limit)
 
 ### Jubilee Upfront Advantage:
 - Keeps $370K more invested
 - @ 7% for 30 years = **$2.82M**
 
 ### Traditional Monthly Advantage:
-- Saves $2,670/month after-tax
-- @ 7% for 30 years = **$3.21M**
+- Saves $2,303/month after-tax
+- @ 7% for 30 years = **$2.77M**
 
-### Winner: Traditional by ~$390K
+### Winner: Nearly a TIE! (~$50K difference)
 (Plus you own 100% vs 40%)
 
 ---
 
 ## Key Insights
 
-1. **Federal benefits are nearly identical** because both hit the $750K mortgage debt cap
+1. **Tax benefits are now essentially identical** because BOTH hit the $750K mortgage debt cap on federal AND California taxes
    - Jubilee: $746K loan (all deductible)
    - Traditional: $1.52M loan (only $750K deductible)
+   - Jubilee actually gets $18/mo MORE in tax benefits
 
-2. **California drives the tax benefit difference** ($363/mo)
-   - No mortgage debt limit on CA state taxes
-   - Traditional deducts $93K interest, Jubilee deducts $47K
+2. **California now conforms to federal $750K limit** for post-2017 loans
+   - Previous analysis assumed CA maintained $1M limit
+   - This eliminates the tax benefit advantage traditional had
 
 3. **Higher tax rate (32% vs 24%) helps ownership more**
    - Reduces after-tax cost for both ownership scenarios
    - But doesn't change the fundamental trade-off
 
-4. **Jubilee still costs $2,670/mo more after-tax**
+4. **Jubilee still costs $2,303/mo more after-tax**
    - The $6,650 land lease is still the dominant factor
-   - Even with full tax benefits, it's expensive monthly
+   - Tax benefits no longer provide an advantage to traditional
+   - The 30-year outcome is now essentially a tie (~$50K difference)
 
 ---
 
 ## Bottom Line for $400K W-2 Earners
 
-At this income level with 32% federal rate:
-- Traditional saves **$2,670/month** vs Jubilee after-tax
-- That's **$32,040/year** or **$961K over 30 years**
-- Traditional also:
-  - Owns 100% of home vs 40%
-  - Gets $350/mo more in tax benefits
-  - Builds more equity
+At this income level with 32% federal rate and CA's $750K conformity:
+- Traditional saves **$2,303/month** vs Jubilee after-tax
+- That's **$27,634/year** or **$2.77M over 30 years** if invested
+- But Jubilee keeps **$370K more invested** = **$2.82M over 30 years**
 
-**Jubilee's value remains accessibility, not optimization.**
+**The financial outcome is now essentially a TIE (~$50K advantage to Jubilee)**
+
+However, Traditional also:
+- Owns 100% of home vs 40%
+- Builds full equity
+- Gets full appreciation
+
+**Jubilee's value proposition has strengthened: it's now nearly financially equivalent for high-income earners, while still offering the accessibility advantage.**
+
+The choice now depends on:
+- **Capital availability** - Do you have $370K for down payment?
+- **Ownership preference** - Do you want 100% ownership vs 40%?
+- **Liquidity preference** - Keep more invested now vs build equity?
